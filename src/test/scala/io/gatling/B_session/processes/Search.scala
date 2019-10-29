@@ -13,19 +13,25 @@ object Search {
   private val pageQueryParamKey = "p"
 
   /**
-    * @note 'page' session variable must have been set to a String integer
-    * @return search request on session specified page
-    * call an http get request on /computers where p is the variable in the session
-    */
-  def searchPageRequest(): HttpRequestBuilder =
-    ???
+   * @note 'page' session variable must have been set to a String integer
+   * @return search request on session specified page
+   *         call an http get request on /computers where p is the variable in the session
+   */
+  def searchPageRequest(): HttpRequestBuilder = {
+    http("My page")
+      .get(uri)
+      .queryParam(pageQueryParamKey, "${page}")
+  }
 
   /**
-    * @return execute search request on multiple specified pages without any addition on those requests
-    * iterate over pages and call searchPageRequest for each page
-    */
-  def searchPages(pages: Int*): ChainBuilder =
-    ???
+   * @return execute search request on multiple specified pages without any addition on those requests
+   *         iterate over pages and call searchPageRequest for each page
+   */
+  def searchPages(pages: Int*): ChainBuilder = {
+    foreach(pages, "page") {
+      exec(searchPageRequest())
+    }
+  }
 
   /*def searchPagesWithSession(): ChainBuilder =
     ???*/
