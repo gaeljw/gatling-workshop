@@ -11,7 +11,7 @@ class ComputerDatabaseSimulation extends Simulation {
   private val httpConf = http.baseUrl("http://computer-database.gatling.io")
 
   setUp(
-    SearchScenario.search.inject(rampUsers(10) during (10 seconds))/*,
-    SearchScenario.searchWithSession.inject(rampUsers(10) during (10 seconds))*/
+    /*SearchScenario.search.inject(rampUsers(10) during (10 seconds)),*/
+    SearchScenario.searchWithSession.inject(rampUsers(10) during (10 seconds))
   ).protocols(httpConf)
 }

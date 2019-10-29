@@ -33,6 +33,9 @@ object Search {
     }
   }
 
-  /*def searchPagesWithSession(): ChainBuilder =
-    ???*/
+  def searchPagesWithSession(): ChainBuilder = {
+    foreach("${pages}", "page") {
+      exec(searchPageRequest()).pause(2.seconds)
+    }
+  }
 }
