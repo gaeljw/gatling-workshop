@@ -15,7 +15,7 @@ object SearchScenario {
     */
   val search: ScenarioBuilder =
     scenario("Search")
-      .exec(Search.searchPages(1, 2))
+      .exec(Search.searchPages(randomizer.nextInt(0, 20)))
 
   /**
     * Search pages with session
