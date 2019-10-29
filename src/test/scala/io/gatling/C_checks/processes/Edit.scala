@@ -10,10 +10,15 @@ object Edit {
   private val companyFormParam = "company"
 
   /**
-    * edit a computer with a post request on the url you retrieved earlier, set the name to fullName, and the company to 3
-    * @note 'computerUrl' (String) and 'fullName' (String) variables must be in the session
-    * @return edit request
-    */
-  val editRequest: HttpRequestBuilder =
-    ???
+   * edit a computer with a post request on the url you retrieved earlier, set the name to fullName, and the company to 3
+   *
+   * @note 'computerUrl' (String) and 'fullName' (String) variables must be in the session
+   * @return edit request
+   */
+  val editRequest: HttpRequestBuilder = {
+    http("Edit computer ${name}")
+      .post("${computerUrl}")
+      .formParam(nameFormParam, "${fullName}")
+      .formParam(companyFormParam, "3")
+  }
 }

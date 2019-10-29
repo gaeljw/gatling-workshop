@@ -11,11 +11,13 @@ object SearchAndEditScenario {
   private val computersFileName = "computers.csv"
 
   /**
-    * Search and edit a computer, read the computers.csv here
-    */
-   val searchAndEdit: ScenarioBuilder =
+   * Search and edit a computer, read the computers.csv here
+   */
+  val searchAndEdit: ScenarioBuilder =
     scenario("Search and edit")
-      //???
+      .feed(
+        csv(computersFileName).circular
+      )
       .exec(Search.searchNameRequest)
       .pause(1 second)
       .exec(Search.searchComputerUrl)
