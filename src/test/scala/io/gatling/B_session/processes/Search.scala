@@ -18,7 +18,7 @@ object Search {
    *         call an http get request on /computers where p is the variable in the session
    */
   def searchPageRequest(): HttpRequestBuilder = {
-    http("My page")
+    http("My page ${page}")
       .get(uri)
       .queryParam(pageQueryParamKey, "${page}")
   }
