@@ -10,9 +10,13 @@ object Search {
   private val pageQueryParamKey = "p"
 
   /**
-    * make an http get request on /computers with a queryParam p
-    * @return search request on a specified page
-    */
-  def searchPageRequest(page: Int): HttpRequestBuilder =
-    ???
+   * make an http get request on /computers with a queryParam p
+   *
+   * @return search request on a specified page
+   */
+  def searchPageRequest(page: Int): HttpRequestBuilder = {
+    http(s"page $page")
+      .get(uri)
+      .queryParam(pageQueryParamKey, page)
+  }
 }
